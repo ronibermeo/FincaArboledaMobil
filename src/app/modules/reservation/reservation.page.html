@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Boton de volver, start para que este al principio del header -->
+    <ion-button slot="start" (click)="backToHome()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+
+    <ion-title style="font-size: 25px;">Reservación</ion-title>
+
+    <!-- Boton de pqrs, end para que este al final del header -->
+    <ion-button slot="end" (click)="goToPqrs()">
+      <ion-icon name="help-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" *ngIf="booking">
+    <h1><strong>Hola, {{booking.name}}</strong></h1>
+    <p>
+      La siguiente información está relacionada con tu código de reserva
+      <strong class="codigo">{{booking.booking_code}}</strong>
+    </p>
+
+    <!-- Card que contiene el nombre, fecha e imagen de la reserva -->
+    <app-card-reservation
+      [booking]="booking"
+      [formattedInitialDate]="formattedInitialDate"
+      [formattedFinalDate]="formattedFinalDate"
+    >
+    </app-card-reservation>
+
+    <app-button
+      label="solicitar soporte"
+      fill="outline"
+      (onTap)="callSupport()"
+    ></app-button>
+
+    <h1 class="h1-preguntas"><strong>Preguntas frecuentes</strong></h1>
+
+    <div class="container-preguntas-frecuentes">
+      <div class="pregunta" (click)="mostrarRespuesta(1)">
+        <span
+          >¿Cuáles son las instalaciones y servicios que se ofrecen en la
+          cabaña?</span
+        >
+      </div>
+      <div class="respuesta" id="respuesta1" *ngIf="respuestasVisibles[1]">
+        La cabaña cuenta con todas las instalaciones interiores de esta y exteriores cuenta con piscina , cancha, zonas verdes y zonas comunes , tambien cuenta con la zona de juegos y zona de asados.
+      </div>
+
+      <div class="pregunta" (click)="mostrarRespuesta(2)">
+        <span
+          >¿Hay restricciones en cuanto al número de personas que pueden
+          alojarse en la cabaña?</span
+        >
+      </div>
+      <div class="respuesta" id="respuesta2" *ngIf="respuestasVisibles[2]">
+        El límite de personas varía según el hospedaje que selecciones en la
+        pestaña donde realices tu reserva.
+      </div>
+
+      <div class="pregunta" (click)="mostrarRespuesta(3)">
+        <span
+          >¿Hay algún costo adicional por el uso de las instalaciones o
+          servicios adicionales?</span
+        >
+      </div>
+      <div class="respuesta" id="respuesta3" *ngIf="respuestasVisibles[3]">
+        <span
+          >El uso de las instalaciones básicas está incluido en el precio de la
+          reserva. Sin embargo, algunos servicios adicionales pueden tener un
+          costo extra.</span
+        >
+      </div>
+
+      <div class="pregunta" (click)="mostrarRespuesta(4)">
+        <span
+          >¿Cuál es el diseño de la cabaña y cuántos dormitorios tiene?</span
+        >
+      </div>
+      <div class="respuesta" id="respuesta4" *ngIf="respuestasVisibles[4]">
+        La cabaña cuenta con un diseño moderno y acogedor, y dispone de 3
+        dormitorios en total. 
+      </div>
+
+      <div class="pregunta" (click)="mostrarRespuesta(5)">
+        <span>¿Puedo llevar a mis mascotas conmigo a la cabaña?</span>
+      </div>
+      <div class="respuesta" id="respuesta5" *ngIf="respuestasVisibles[5]">
+        Si, siempre y cuando seas cauteloso y te hagas completamente responsable de ella.
+      </div>
+    </div>
+
+    <ion-content>
+      <app-pqrs
+        [isOpenModal]="isOpenModalPqrs"
+        [booking]="booking"
+        (onWillDismiss)="isOpenModalPqrs = false"
+      ></app-pqrs>
+    </ion-content>
+  </div>
+</ion-content>

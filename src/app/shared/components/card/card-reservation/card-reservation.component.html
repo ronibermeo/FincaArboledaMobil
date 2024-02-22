@@ -1,0 +1,33 @@
+<ion-card mode="ios">
+  <ion-card-header>
+    <ion-card-subtitle><ion-icon name="calendar-clear-outline"></ion-icon> {{ formattedInitialDate }} - {{
+      formattedFinalDate }} </ion-card-subtitle>
+    <ion-card-title>{{booking.tittle}}</ion-card-title>
+  </ion-card-header>
+  <img alt="" [src]="loadImg(booking.url)" />
+  <app-rates [rating]="2" (onTapRate)="onTapRate($event)"></app-rates>
+</ion-card>
+
+<app-modal-sheet [isOpen]="isOpenModal" (onWillDismiss)="isOpenModal = false">
+  <h1>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Calificación y opinión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+
+          <app-rates [rating]="selectedRating" (onTapRate)="onTapRate($event)"></app-rates>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" > Comentario</ion-label>
+          <ion-textarea rows="2" placeholder="Cuentanos tu experiencia" [(ngModel)]="opinion"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+      <ion-row justify-content-center>
+        <app-button expand="block" label="Enviar" (click)="submitRating()">
+        </app-button>
+      </ion-row>
+    </ion-card>
+  </h1>
+</app-modal-sheet>

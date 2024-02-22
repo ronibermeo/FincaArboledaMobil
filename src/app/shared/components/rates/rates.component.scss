@@ -1,0 +1,9 @@
+.rates {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .rate {
+      --padding-start: 0em;
+      --padding-end: 0em;
+    }
+  }

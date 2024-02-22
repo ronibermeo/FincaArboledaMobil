@@ -1,0 +1,7 @@
+{
+  "name": "fincaLaArboleda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

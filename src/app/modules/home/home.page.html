@@ -1,0 +1,17 @@
+<ion-content>
+  <!-- div contenedor de todo -->
+  <div class="search-container background-image">
+    <!-- Clase que tiene el texto de bienvenida -->
+    <p class="searchbar-label">Bienvenido👋🏻</p>
+
+    <!-- Barra de busqueda tipo numerica -->
+    <ion-searchbar
+      animated="true"
+      placeholder="Código de reserva"
+      [(ngModel)]="reservationCode"
+    ></ion-searchbar>
+
+    <ion-button shape="round" (click)="navigateToReservation()">Buscar reserva</ion-button>
+  </div>
+</ion-content>
+
